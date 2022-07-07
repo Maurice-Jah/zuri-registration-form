@@ -30,25 +30,27 @@
           </p>
         </div>
 
-        <form action="#" method="post">
+        <form action="#" method="post" id="form">
           <div class="firstname">
             <input
               type="text"
               name="firstname"
               id="firstname"
               placeholder="First Name"
-              required
             />
+            <img src="./images/icon-error.svg" alt="error-img" />
+            <p class="message">Error Message</p>
           </div>
 
           <div class="lastname">
             <input
               type="text"
-              name="firstname"
-              id="firstname"
+              name="lastname"
+              id="lastname"
               placeholder="Last Name"
-              required
             />
+            <img src="./images/icon-error.svg" alt="error-img" />
+            <p class="message1">Error Message</p>
           </div>
 
           <div class="email">
@@ -57,8 +59,9 @@
               name="email"
               id="email"
               placeholder="Email Address"
-              required
             />
+            <img src="./images/icon-error.svg" alt="error-img" />
+            <p class="message2">Error Message</p>
           </div>
 
           <div class="password">
@@ -67,12 +70,13 @@
               name="password"
               id="password"
               placeholder="Password"
-              required
             />
+            <img src="./images/icon-error.svg" alt="error-img" />
+            <p class="message3">Error Message</p>
           </div>
 
           <div class="submit">
-            <input type="submit" value="Claim your free trial" />
+            <input type="submit" value="Claim your free trial" id="submit" />
             <p class="form-sub">
               By clicking the button, you are agreeing to our
               <span class="terms">Terms and Services</span>
@@ -81,5 +85,73 @@
         </form>
       </div>
     </main>
+
+    <script>
+      const form = document.getElementById("form");
+      const firstnameDiv = document.querySelector(".firstname");
+      const lastnameDiv = document.querySelector(".lastname");
+      const emailDiv = document.querySelector(".email");
+      const passwordDiv = document.querySelector(".password");
+      const firstname = document.getElementById("firstname");
+      const lastname = document.getElementById("lastname");
+      const email = document.getElementById("email");
+      const password = document.getElementById("password");
+      const message = document.querySelector(".message");
+      const message1 = document.querySelector(".message1");
+      const message2 = document.querySelector(".message2");
+      const message3 = document.querySelector(".message3");
+      const submit = document.getElementById("submit");
+
+      //  validation
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        checkInputs();
+      });
+
+      const checkInputs = () => {
+        // trim white spaces
+        const firstnameValue = firstname.value.trim();
+        const lastnameValue = lastname.value.trim();
+        const emailValue = email.value.trim();
+        const passwordValue = password.value.trim();
+
+        if (firstnameValue === "") {
+          message.innerText = "First Name cannot be empty";
+          message.style.visibility = "visible";
+          firstnameDiv.children[1].style.opacity = "1";
+        } else {
+          message.innerText = "";
+          firstnameDiv.children[1].style.opacity = "0";
+        }
+
+        if (lastnameValue === "") {
+          message1.innerText = "Last Name cannot be empty";
+          message1.style.visibility = "visible";
+          lastnameDiv.children[1].style.opacity = "1";
+        } else {
+          message1.innerText = "";
+          lastnameDiv.children[1].style.opacity = "0";
+        }
+
+        if (emailValue === "") {
+          message2.innerText = "Email cannot be empty";
+          message2.style.visibility = "visible";
+          emailDiv.children[1].style.opacity = "1";
+        } else {
+          message2.innerText = "";
+          emailDiv.children[1].style.opacity = "0";
+        }
+
+        if (passwordValue === "") {
+          message3.innerText = "Password cannot be empty";
+          message3.style.visibility = "visible";
+          passwordDiv.children[1].style.opacity = "1";
+        } else {
+          message3.innerText = "";
+          passwordDiv.children[1].style.opacity = "0";
+        }
+      };
+    </script>
   </body>
 </html>

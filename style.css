@@ -87,6 +87,8 @@ form {
 
 form > div {
   margin: 20px;
+  margin-bottom: 2rem;
+  position: relative;
 }
 
 form input {
@@ -137,6 +139,31 @@ form input:focus:not(input[type="submit"]) {
   font-weight: 600;
   box-shadow: 0px 2px 3px rgb(205, 202, 202);
   cursor: pointer;
+}
+
+.firstname img,
+.lastname img,
+.password img,
+.email img {
+  position: absolute;
+  top: 50%;
+  right: 2%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+
+  opacity: 0;
+}
+
+.message,
+.message1,
+.message2,
+.message3 {
+  position: absolute;
+  color: var(--clr-red);
+  font-weight: 700;
+  font-size: 12px;
+  right: 0;
+  visibility: hidden;
 }
 
 .form-sub {
